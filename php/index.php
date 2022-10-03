@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <div class="row">
         <?php
-        include "../html/navbar.html"
+        include "navbar.php"
         ?>
     </div>
 
