@@ -18,8 +18,11 @@
         include "../html/navbar.html"
         ?>
     </div>
+
+    <canvas id="myChart" width="200" height="200"></canvas>
 </div>
-<script type="module" src="./js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="../js/main.js"></script>
 </body>
 </html>
 
