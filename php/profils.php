@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Workshop 2022</title>
     <?php
-    $accueil = "active";
-    $profil = "";
+    $accueil = "";
+    $profil = "active";
     ?>
 </head>
 <body>
