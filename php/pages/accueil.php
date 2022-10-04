@@ -37,7 +37,7 @@ $profil = "";
 									<li><a class="dropdown-item" href="#" data-value="bar">Barre</a></li>
 								</ul>
 							</div>
-							<h5 class="card-title">Titre graphique</h5>
+							<h5 class="card-title">Silo 1</h5>
 							<p class="card-text">
 								<button type="button" class="btn btn-success">+1</button>
 								<button type="button" class="btn btn-success">+2</button>
