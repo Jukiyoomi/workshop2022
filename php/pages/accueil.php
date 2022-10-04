@@ -27,6 +27,16 @@ $profil = "";
 					<div class="card" style="">
 						<canvas id="myChart" width="200" height="50"></canvas>
 						<div class="card-body">
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									Type de graphique
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+									<li><a class="dropdown-item" href="#">Courbe</a></li>
+									<li><a class="dropdown-item" href="#">Secteur</a></li>
+									<li><a class="dropdown-item" href="#">Barre</a></li>
+								</ul>
+							</div>
 							<h5 class="card-title">Card title</h5>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 							<a href="#" class="btn btn-primary">Go somewhere</a>
