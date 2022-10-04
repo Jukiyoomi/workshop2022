@@ -1,8 +1,9 @@
 <?php
 $accueil = "active";
 $profil = "";
-?>
 
+require_once('../../bdd/DataBase.php');
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -37,7 +38,7 @@ $profil = "";
 									<li class="dropdown-item" data-value="doughnut">Secteur</li>
 								</ul>
 							</div>
-							<h5 class="card-title">Titre graphique</h5>
+							<h5 class="card-title">Silo 1</h5>
 							<p class="card-text">
 								<button type="button" class="btn btn-success">+1</button>
 								<button type="button" class="btn btn-success">+2</button>
