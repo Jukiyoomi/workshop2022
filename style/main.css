@@ -19,6 +19,14 @@
 	opacity: 1;
 	transition: 0.5s;
 }
+.dimension_profil.active:hover {
+	opacity: unset;
+}
+
+.dimension_profil:hover{
+	opacity: 0.7;
+	cursor: pointer;
+}
 
 .dimension_profil img {
 	position: absolute;
