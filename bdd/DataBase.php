@@ -34,21 +34,22 @@ class DataBase
         return mysqli_real_escape_string($this->connect, stripslashes(htmlspecialchars($data)));
     }
 
-    function logIn($table, $pseudo, $password)
+    function insert($table, $id_silo, $quantite)
     {
-        $pseudo = $this->prepareData($pseudo);
-        $password = $this->prepareData($password);
-        $this->sql = "select * from " . $table . " where pseudo = '" . $pseudo . "'";
-        $result = mysqli_query($this->connect, $this->sql);
-        $row = mysqli_fetch_assoc($result);
-        if (mysqli_num_rows($result) != 0) {
-            $dbusername = $row['pseudo'];
-            $dbpassword = $row['mdp'];
-            if ($dbusername == $pseudo && password_verify($password, $dbpassword)) {
-                $login = true;
-            } else $login = false;
-        } else $login = false;
+		$date = new DateTime("now", new DateTimeZone("Europe/Paris"));
+		$date = $date->format('Y-m-d H:i:s');
 
-        return $login;
+        $date = $this->prepareData($date);
+        $quantite = $this->prepareData($quantite);
+		$id_silo = $this->prepareData($id_silo);
+
+		$this->sql = "INSERT INTO " . $table . " (id_silo, quantite, date) VALUES ('" . $id_silo. "','" . $quantite . "','" . $date . "')";
+		if (mysqli_query($this->connect, $this->sql)) {
+			return true;
+		} else {
+			echo mysqli_error($this->connect);
+			return false;
+		}
+
     }
 }
