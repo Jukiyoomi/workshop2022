@@ -32,9 +32,9 @@ $profil = "";
 									Type de graphique
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-									<li><a class="dropdown-item" href="#">Courbe</a></li>
-									<li><a class="dropdown-item" href="#">Secteur</a></li>
-									<li><a class="dropdown-item" href="#">Barre</a></li>
+									<li><a class="dropdown-item active" href="#" data-value="line">Courbe</a></li>
+									<li><a class="dropdown-item" href="#" data-value="doughnut">Secteur</a></li>
+									<li><a class="dropdown-item" href="#" data-value="bar">Barre</a></li>
 								</ul>
 							</div>
 							<h5 class="card-title">Titre graphique</h5>
