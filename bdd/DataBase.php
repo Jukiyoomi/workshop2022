@@ -36,17 +36,20 @@ class DataBase
 
     function insert($table, $id_silo, $quantite)
     {
-		$date = date("d/m/Y-H:i:s");
+		$date = new DateTime("now", new DateTimeZone("Europe/Paris"));
+		$date = $date->format('Y-m-d H:i:s');
 
         $date = $this->prepareData($date);
         $quantite = $this->prepareData($quantite);
 		$id_silo = $this->prepareData($id_silo);
 
-		$this->sql =
-			"INSERT INTO " . $table . " (id_silo, quantite, date) VALUES 
-            ('" . $id_silo. "','" . $quantite . "','" . $date . "')";
+		$this->sql = "INSERT INTO " . $table . " (id_silo, quantite, date) VALUES ('" . $id_silo. "','" . $quantite . "','" . $date . "')";
 		if (mysqli_query($this->connect, $this->sql)) {
 			return true;
-		} else return false;
+		} else {
+			echo mysqli_error($this->connect);
+			return false;
+		}
+
     }
 }

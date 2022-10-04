@@ -40,21 +40,24 @@ require_once('../../bdd/DataBase.php');
 							</div>
 							<h5 class="card-title">Silo 1</h5>
 							<p class="card-text">
-							<form action="../../bdd/insert_quantite_silo.php" method="post">
-								<button type="submit" class="btn btn-success" name = "quantite" value = "1">+1</button>
-								<button type="submit" class="btn btn-success">+2</button>
-								<button type="submit" class="btn btn-success">+5</button>
-								<button type="submit" class="btn btn-success">+10</button>
-								<button type="submit" class="btn btn-success">+50</button>
+							<form action="../../bdd/insert_quantite_silo.php" method="POST">
+								<button type="submit" class="btn btn-success" name="quantite" value="1">+1</button>
+								<button type="submit" class="btn btn-success" name="quantite" value="2">+2</button>
+								<button type="submit" class="btn btn-success" name="quantite" value="5">+5</button>
+								<button type="submit" class="btn btn-success" name="quantite" value="10">+10</button>
+								<button type="submit" class="btn btn-success" name="quantite" value="50">+50</button>
 								<input type="hidden" value="1" name="id_silo">
 							</form>
 							</p>
 							<p class="card-text">
-								<button type="button" class="btn btn-danger">-1</button>
-								<button type="button" class="btn btn-danger">-2</button>
-								<button type="button" class="btn btn-danger">-5</button>
-								<button type="button" class="btn btn-danger">-10</button>
-								<button type="button" class="btn btn-danger">-50</button>
+							<form action="../../bdd/insert_quantite_silo.php" method="POST">
+								<button type="submit" class="btn btn-danger" name="quantite" value="-1">-1</button>
+								<button type="submit" class="btn btn-danger" name="quantite" value="-2">-2</button>
+								<button type="submit" class="btn btn-danger" name="quantite" value="-5">-5</button>
+								<button type="submit" class="btn btn-danger" name="quantite" value="-10">-10</button>
+								<button type="submit" class="btn btn-danger" name="quantite" value="-50">-50</button>
+								<input type="hidden" value="1" name="id_silo"/>
+							</form>
 							</p>
 							<a href="#" class="btn btn-primary">Go somewhere</a>
 						</div>
