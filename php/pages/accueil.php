@@ -27,7 +27,7 @@ require_once('../../bdd/DataBase.php');
 				<div class="col">
 					<div class="card" style="">
 						<canvas id="myChart" width="200" height="50"></canvas>
-						<div class="card-body">
+						<div class="card-body pb-0">
 							<div class="dropdown mb-2">
 								<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 									Type de graphique
@@ -40,26 +40,35 @@ require_once('../../bdd/DataBase.php');
 							</div>
 							<h5 class="card-title">Silo 1</h5>
 							<p class="card-text">
-							<form action="../../bdd/insert_quantite_silo.php" method="POST">
-								<button type="submit" class="btn btn-success" name="quantite" value="1">+1</button>
-								<button type="submit" class="btn btn-success" name="quantite" value="2">+2</button>
-								<button type="submit" class="btn btn-success" name="quantite" value="5">+5</button>
-								<button type="submit" class="btn btn-success" name="quantite" value="10">+10</button>
-								<button type="submit" class="btn btn-success" name="quantite" value="50">+50</button>
-								<input type="hidden" value="1" name="id_silo">
-							</form>
+								<form action="../../bdd/insert_quantite_silo.php" method="POST">
+									<div class="row">
+										<div class="col btn_center">
+											<button type="submit" class="btn btn-success" name="quantite" value="1">+1</button>
+											<button type="submit" class="btn btn-success" name="quantite" value="2">+2</button>
+											<button type="submit" class="btn btn-success" name="quantite" value="5">+5</button>
+											<button type="submit" class="btn btn-success" name="quantite" value="10">+10</button>
+											<button type="submit" class="btn btn-success" name="quantite" value="50">+50</button>
+										</div>
+										<div class="col btn_center">
+											<button type="submit" class="btn btn-danger" name="quantite" value="-1">-1</button>
+											<button type="submit" class="btn btn-danger" name="quantite" value="-2">-2</button>
+											<button type="submit" class="btn btn-danger" name="quantite" value="-5">-5</button>
+											<button type="submit" class="btn btn-danger" name="quantite" value="-10">-10</button>
+											<button type="submit" class="btn btn-danger" name="quantite" value="-50">-50</button>
+										</div>
+									</div>
+									<input type="hidden" value="1" name="id_silo"/>
+								</form>
+								<form action="../../bdd/insert_quantite_silo.php" method="POST">
+									<div class="row">
+										<div class="col mt-3">
+											<input type="text" name="quantite" size="10" placeholder="Personnalisé">
+											<button class="btn btn-primary">Valider</button>
+										</div>
+									</div>
+									<input type="hidden" value="1" name="id_silo"/>
+								</form>
 							</p>
-							<p class="card-text">
-							<form action="../../bdd/insert_quantite_silo.php" method="POST">
-								<button type="submit" class="btn btn-danger" name="quantite" value="-1">-1</button>
-								<button type="submit" class="btn btn-danger" name="quantite" value="-2">-2</button>
-								<button type="submit" class="btn btn-danger" name="quantite" value="-5">-5</button>
-								<button type="submit" class="btn btn-danger" name="quantite" value="-10">-10</button>
-								<button type="submit" class="btn btn-danger" name="quantite" value="-50">-50</button>
-								<input type="hidden" value="1" name="id_silo"/>
-							</form>
-							</p>
-							<a href="#" class="btn btn-primary">Go somewhere</a>
 						</div>
 					</div>
 				</div>

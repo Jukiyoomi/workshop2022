@@ -36,3 +36,8 @@
 	top: 0;
 	left: 0;
 }
+
+.btn_center {
+	width: auto;
+	text-align: center;
+}
