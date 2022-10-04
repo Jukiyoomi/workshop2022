@@ -1,3 +1,30 @@
-body {
-	background-color: red;
+#test {
+	display: none;
+}
+#test:checked ~ label, #test:checked ~ img {
+	opacity: 1;
+}
+
+.dimension_profil{
+	width: 20px;
+	height: 250px;
+	border-radius: 40px;
+	position: relative;
+	overflow: hidden;
+	opacity: 0.5;
+	transition: 0.5s;
+}
+
+.dimension_profil.active {
+	opacity: 1;
+	transition: 0.5s;
+}
+
+.dimension_profil img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	top: 0;
+	left: 0;
 }
