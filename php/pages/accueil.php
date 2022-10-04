@@ -1,8 +1,9 @@
 <?php
 $accueil = "active";
 $profil = "";
-?>
 
+require_once('../../bdd/DataBase.php');
+?>
 
 <!DOCTYPE html>
 <html lang="fr">

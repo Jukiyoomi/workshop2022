@@ -29,19 +29,6 @@ class DataBase
         return $this->connect;
     }
 
-    function getServername(){
-        return $this->servername;
-    }
-    function getUserame(){
-        return $this->username;
-    }
-    function getPassword(){
-        return $this->password;
-    }
-    function getDatabasename(){
-        return $this->databasename;
-    }
-
     function prepareData($data)
     {
         return mysqli_real_escape_string($this->connect, stripslashes(htmlspecialchars($data)));
@@ -63,100 +50,5 @@ class DataBase
         } else $login = false;
 
         return $login;
-    }
-
-    function insertCompteRendu($table, $prenom, $nom, $naiss, $adresse, $tel, $email, $ante, $medic, $duree, $rdv)
-    {
-        $prenom = $this->prepareData($prenom);
-        $nom = $this->prepareData($nom);
-        $naiss = $this->prepareData($naiss);
-        $adresse = $this->prepareData($adresse);
-        $tel = $this->prepareData($tel);
-        $email = $this->prepareData($email);
-        $ante = $this->prepareData($ante);
-        $medic = $this->prepareData($medic);
-        $duree = $this->prepareData($duree);
-        $rdv = $this->prepareData($rdv);
-
-        $this->sql =
-            "INSERT INTO " . $table . " (prenom, nom, naiss, adresse, tel, email, ante, medic, duree, rdv) VALUES 
-            ('" . $prenom . "','" . $nom . "','" . $naiss . "','" . $adresse . "','" . $tel . "','" . $email . "','" . $ante . "','" . $medic . "','" . $duree . "','" . $rdv . "')";
-        if (mysqli_query($this->connect, $this->sql)) {
-            return true;
-        } else return false;
-    }
-
-    function visiteurInsertCompteRendu($table, $medic, $duree, $rdv, $titre, $prix, $region, $id, $id_medecin)
-    {
-        $medic = $this->prepareData($medic);
-        $duree = $this->prepareData($duree);
-        $rdv = $this->prepareData($rdv);
-        $titre = $this->prepareData($titre);
-        $prix = $this->prepareData($prix);
-        $region = $this->prepareData($region);
-        $id = $this->prepareData($id);
-        $id_medecin = $this->prepareData($id_medecin);
-
-        $this->sql =
-            "INSERT INTO " . $table . " (medic, duree, rdv, titre, prix, region, id_visiteur, id_medecin) VALUES 
-            ('" . $medic . "','" . $duree . "','" . $rdv . "','" . $titre . "','" . $prix . "','" . $region . "','" . $id . "','" . $id_medecin . "')";
-        if (mysqli_query($this->connect, $this->sql)) {
-            return true;
-        } else return false;
-    }
-
-    function signUp($table, $pseudo, $mdp)
-    {
-        $pseudo = $this->prepareData($pseudo);
-        $mdp = $this->prepareData($mdp);
-        $mdp = password_hash($mdp, PASSWORD_DEFAULT);
-        $this->sql =
-            "INSERT INTO " . $table . " (pseudo, mdp) VALUES ('" . $pseudo . "','" . $mdp . "')";
-        if (mysqli_query($this->connect, $this->sql)) {
-            return true;
-        } else return false;
-    }
-
-    function getRegion($table, $pseudo){
-        $pseudo = $this->prepareData($pseudo);
-        $this->sql = "select region from " . $table . " where pseudo = '" . $pseudo . "'";
-        $result = mysqli_query($this->connect, $this->sql);
-        $row = mysqli_fetch_assoc($result);
-        if (mysqli_num_rows($result) != 0) {
-            $region = $row['region'];
-        }
-        return $region;
-    }
-
-    function getRole($table, $pseudo){
-        $pseudo = $this->prepareData($pseudo);
-        $this->sql = "select role from " . $table . " where pseudo = '" . $pseudo . "'";
-        $result = mysqli_query($this->connect, $this->sql);
-        $row = mysqli_fetch_assoc($result);
-        if (mysqli_num_rows($result) != 0) {
-            $role = $row['role'];
-        }
-        return $role;
-    }
-
-    function getId($table, $pseudo){
-        $id = $this->prepareData($pseudo);
-        $this->sql = "select id from " . $table . " where pseudo = '" . $pseudo . "'";
-        $result = mysqli_query($this->connect, $this->sql);
-        $row = mysqli_fetch_assoc($result);
-        if (mysqli_num_rows($result) != 0) {
-            $id = $row['id'];
-        }
-        return $id;
-    }
-
-    function delete($table, $id){
-        $sql = "DELETE FROM " . $table . " WHERE id = '" . $id ."'";
-        if (mysqli_query($this->connect, $sql)) {
-            return true;
-        } else {
-            return false;
-        }
-        mysqli_close($this->connect);
     }
 }
