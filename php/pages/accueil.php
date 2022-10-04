@@ -19,7 +19,7 @@ require_once('../../bdd/DataBase.php');
 		<div class="container-fluid">
 			<div class="row">
 				<?php
-				include "../composants/navbar.php"
+				include "../composants/navbar.php";
 				?>
 			</div>
 
@@ -40,11 +40,14 @@ require_once('../../bdd/DataBase.php');
 							</div>
 							<h5 class="card-title">Silo 1</h5>
 							<p class="card-text">
-								<button type="button" class="btn btn-success">+1</button>
-								<button type="button" class="btn btn-success">+2</button>
-								<button type="button" class="btn btn-success">+5</button>
-								<button type="button" class="btn btn-success">+10</button>
-								<button type="button" class="btn btn-success">+50</button>
+							<form action="../../bdd/insert_quantite_silo.php" method="post">
+								<button type="submit" class="btn btn-success" name = "quantite" value = "1">+1</button>
+								<button type="submit" class="btn btn-success">+2</button>
+								<button type="submit" class="btn btn-success">+5</button>
+								<button type="submit" class="btn btn-success">+10</button>
+								<button type="submit" class="btn btn-success">+50</button>
+								<input type="hidden" value="1" name="id_silo">
+							</form>
 							</p>
 							<p class="card-text">
 								<button type="button" class="btn btn-danger">-1</button>
