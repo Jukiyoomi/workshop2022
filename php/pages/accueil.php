@@ -38,7 +38,20 @@ $profil = "";
 								</ul>
 							</div>
 							<h5 class="card-title">Titre graphique</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							<p class="card-text">
+								<button type="button" class="btn btn-success">+1</button>
+								<button type="button" class="btn btn-success">+2</button>
+								<button type="button" class="btn btn-success">+5</button>
+								<button type="button" class="btn btn-success">+10</button>
+								<button type="button" class="btn btn-success">+50</button>
+							</p>
+							<p class="card-text">
+								<button type="button" class="btn btn-danger">-1</button>
+								<button type="button" class="btn btn-danger">-2</button>
+								<button type="button" class="btn btn-danger">-5</button>
+								<button type="button" class="btn btn-danger">-10</button>
+								<button type="button" class="btn btn-danger">-50</button>
+							</p>
 							<a href="#" class="btn btn-primary">Go somewhere</a>
 						</div>
 					</div>
