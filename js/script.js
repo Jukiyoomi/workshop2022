@@ -1,8 +1,10 @@
-//import {Chart} from "chart.js";
+// import '../style/main.css'
+
+console.log("hello world")
 
 const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'bar',
+new Chart(ctx, {
+    type: 'line',
     data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
         datasets: [{
