@@ -29,10 +29,23 @@ class DataBase
         return $this->connect;
     }
 
-    function prepareData($data)
-    {
-        return mysqli_real_escape_string($this->connect, stripslashes(htmlspecialchars($data)));
-    }
+	function getServername(){
+		return $this->servername;
+	}
+	function getUserame(){
+		return $this->username;
+	}
+	function getPassword(){
+		return $this->password;
+	}
+	function getDatabasename(){
+		return $this->databasename;
+	}
+
+	function prepareData($data)
+	{
+		return mysqli_real_escape_string($this->connect, stripslashes(htmlspecialchars($data)));
+	}
 
     function insert($table, $id_silo, $quantite)
     {
@@ -50,6 +63,18 @@ class DataBase
 			echo mysqli_error($this->connect);
 			return false;
 		}
-
     }
+
+	public function getData($table, $id_silo){
+		$table = $this->prepareData($table);
+		$id_silo = $this->prepareData($id_silo);
+		$this->sql = "select * from " . $table . " where id_silo = '" . $id_silo . "'";
+		$result = mysqli_query($this->connect, $this->sql);
+		$row = mysqli_fetch_assoc($result);
+		if (mysqli_num_rows($result) != 0) {
+			$result = $row['result'];
+		}
+		return $result;
+	}
+
 }

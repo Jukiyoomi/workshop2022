@@ -35,6 +35,7 @@
 	object-fit: cover;
 	top: 0;
 	left: 0;
+	object-position: bottom;
 }
 
 .btn_center {

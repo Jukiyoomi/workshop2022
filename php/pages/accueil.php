@@ -2,7 +2,7 @@
 $accueil = "active";
 $profil = "";
 
-require_once('../../bdd/DataBase.php');
+include_once('../../bdd/DataBase.php');
 ?>
 
 <!DOCTYPE html>
@@ -72,6 +72,11 @@ require_once('../../bdd/DataBase.php');
 						</div>
 					</div>
 				</div>
+
+				<?php
+					require ('../../bdd/getData.php');
+				?>
+
 				<div class="col">
 					<div class="card" style="">
 						<img src="../../images" class="card-img-top" alt="...">
