@@ -25,8 +25,6 @@ customValForm.addEventListener('submit', (e) => {
     sendData(document.forms['add_value'].action, quantite, idSilo)
 })
 
-
-
 async function sendData(url, quantity, idSilo) {
     const response = await axios.post(url, {
         'quantite': quantity,
