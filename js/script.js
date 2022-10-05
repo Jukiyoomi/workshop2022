@@ -1,3 +1,5 @@
+import createCard from './createCard.js'
+
 const ctx = document.getElementById('myChart').getContext('2d');
 const dropdownItems = document.querySelectorAll('.dropdown-item')
 const formPlus = document.querySelector('#add_value')
@@ -6,6 +8,7 @@ let currentType = "bar"
 let value = 0
 let chart = null
 
+tt()
 
 //Events sur les forms
 formPlus.addEventListener('submit', (e) => {
@@ -43,20 +46,23 @@ dropdownItems.forEach(item => {
 })
 
 window.addEventListener('DOMContentLoaded',  async () => {
-    const response = await getData()
-    getTotal(response, currentType)
+    // const response = await getData()
+    // getTotal(response, currentType)
+    const tt = await getDataSilo()
+    console.log(tt)
 
 })
 
 async function getData() {
-    const response = await axios.get('http://localhost/B3/workshop2022/bdd/get_quantite_silo.php')
+    const {data} = await axios.get('http://localhost/workshop2022/bdd/get_quantite_silo.php')
     // console.log(response)
-    return response.data
+    return data
 }
 
-let test = await axios.get('http://localhost/B3/workshop2022/bdd/getDataSilo.php')
-console.log(test)
-
+async function getDataSilo() {
+    let {data} = await axios.get('http://localhost/workshop2022/bdd/getDataSilo.php')
+    return data
+}
 function getTotal(param, type) {
     // console.log(param)
     value = param.map(data => data.quantite).reduce(reducer)
