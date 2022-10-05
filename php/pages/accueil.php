@@ -75,6 +75,10 @@ include_once('../../bdd/DataBase.php');
 
 				<?php
 					require ('../../bdd/getData.php');
+
+					$test = new DataBase();
+					$test = $test->getData('historique_silo', 1);
+					var_dump($test);
 				?>
 
 				<div class="col">

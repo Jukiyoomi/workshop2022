@@ -12,30 +12,15 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-/*$tab = array();
+$tab = array();
 
 $sql = new DataBase();
 
-$sql = $sql->getData('historique_silo', '1');
+$tab = $sql->getData('historique_silo', '1');
 
-$stmt = $conn->prepare($sql);
-$stmt->execute();
+return $tab;
 
-$stmt->bind_result($quantite, $date);
-
-while ($stmt->fetch()) {
-	$temp = [
-		'quantite' => $quantite,
-		'date' => $date
-	];
-
-	$temp = array_map('utf8_encode',$temp);
-	array_push($tab, $temp);
-}
-
-return $tab;*/
-
-$sql = new DataBase();
+/*$sql = new DataBase();
 
 $sql = "SELECT * FROM `historique_silo` WHERE id_silo = 1;";
 $result = $conn->query($sql);
@@ -48,4 +33,4 @@ if ($result->num_rows > 0) {
 } else {
 	echo "0 results";
 }
-$conn->close();
+$conn->close();*/

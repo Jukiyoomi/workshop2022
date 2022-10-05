@@ -66,7 +66,7 @@ class DataBase
     }
 
 	public function getData($table, $id_silo){
-		$table = $this->prepareData($table);
+		/*$table = $this->prepareData($table);
 		$id_silo = $this->prepareData($id_silo);
 		$this->sql = "select * from " . $table . " where id_silo = '" . $id_silo . "'";
 		$result = mysqli_query($this->connect, $this->sql);
@@ -74,7 +74,22 @@ class DataBase
 		if (mysqli_num_rows($result) != 0) {
 			$result = $row['result'];
 		}
-		return $result;
+		return $result;*/
+
+		$this->sql = "SELECT * FROM " . $table . " WHERE id_silo = '" . $id_silo . "'";
+		$result = mysqli_query($this->dbConnect(), $this->sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = mysqli_fetch_array($result)) {
+				$tab[] = $row['quantite'];
+			}
+		} else {
+			echo "0 results";
+		}
+//		$conn->close();
+
+		return $tab;
 	}
 
 }
