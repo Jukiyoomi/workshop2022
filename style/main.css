@@ -52,7 +52,7 @@
 	padding: 10px;
 	border-radius: 10px;
 	margin: auto;
-	background: #198754;
+	background: rgb(60, 157, 85);
 	gap: 10px;
 	box-shadow: 5px 5px 5px rgba(0,0,0,.3);
 }
@@ -62,6 +62,14 @@
 	border: none;
 	border-radius: 10px;
 	flex: 1;
+}
+
+.formulaire_ajout2 {
+	background: rgb(154, 41, 157);
+}
+
+.formulaire_ajout3 {
+	background:	 rgb(234, 100, 20);
 }
 
 .viti {

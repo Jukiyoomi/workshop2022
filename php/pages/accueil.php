@@ -35,6 +35,26 @@ include_once('../../bdd/DataBase.php');
 					</form>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col my-2">
+					<form action="../../bdd/insert_silo" method="POST" class="formulaire_ajout formulaire_ajout2">
+						<input type="text" name="nom" size="10" placeholder="Nom">
+						<input type="text" name="type" size="10" placeholder="Type">
+						<input type="number" name="capacite_max" size="10" placeholder="Capacité maximale">
+						<button class="btn btn-light text-success" type="submit">Créer</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col my-2">
+					<form action="../../bdd/insert_silo" method="POST" class="formulaire_ajout formulaire_ajout3">
+						<input type="text" name="nom" size="10" placeholder="Nom">
+						<input type="text" name="type" size="10" placeholder="Type">
+						<input type="number" name="capacite_max" size="10" placeholder="Capacité maximale">
+						<button class="btn btn-light text-success" type="submit">Créer</button>
+					</form>
+				</div>
+			</div>
 
 			<div class="row mt-3">
 				<div class="col-6">
