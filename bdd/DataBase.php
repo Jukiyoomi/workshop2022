@@ -94,8 +94,8 @@ class DataBase
 		return $set;
 	}
 
-	public function getData_silo($table, $id_silo){
-		$this->sql = "SELECT * FROM " . $table . " WHERE id = '" . $id_silo . "'";
+	public function getData_silo($table){
+		$this->sql = "SELECT * FROM " . $table;
 		$result = mysqli_query($this->dbConnect(), $this->sql);
 
 		if ($result->num_rows > 0) {

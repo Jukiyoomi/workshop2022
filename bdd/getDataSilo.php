@@ -3,5 +3,5 @@
 require_once ('getData.php');
 
 $test = new DataBase();
-$test = $test->getData_silo('silo', 1);
+$test = $test->getData_silo('silo');
 echo json_encode($test);
