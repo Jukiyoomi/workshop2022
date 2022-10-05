@@ -4,7 +4,7 @@ export default function createCard(nom, id) {
 	container.innerHTML += 
 		`
 <div class="col-6">
-	<div class="card card_css" style="">
+	<div class="card card_css mb-4" style="">
 		<canvas class="myChart old-${id} chart-${id}" width="200" height="50"></canvas>
 		<div class="card-body pb-0">
 			<div class="dropdown mb-2">
