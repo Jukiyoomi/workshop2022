@@ -78,7 +78,7 @@ function createChart(test, chartType = 'bar') {
     chart = new Chart(ctx, {
         type: chartType,
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ['Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre'],
             datasets: [{
                 label: '# of Votes',
                 data: [8, 3, 5, 2, 3, test],
