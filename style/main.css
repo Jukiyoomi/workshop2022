@@ -42,3 +42,9 @@
 	width: auto;
 	text-align: center;
 }
+
+.formulaire_ajout {
+	width: fit-content;
+	justify-content: center;
+	margin: auto;
+}

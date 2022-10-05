@@ -26,8 +26,8 @@ include_once('../../bdd/DataBase.php');
 			</div>
 			
 			<div class="row">
-				<div class="col">
-					<form action="../../bdd/insert_silo" method="POST">
+				<div class="col my-2">
+					<form action="../../bdd/insert_silo" method="POST" class="formulaire_ajout">
 						<input type="text" name="nom" size="10" placeholder="Nom">
 						<input type="text" name="type" size="10" placeholder="Type">
 						<input type="number" name="capacite_max" size="10" placeholder="Capacité maximale">
