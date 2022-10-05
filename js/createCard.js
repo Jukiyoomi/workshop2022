@@ -5,7 +5,7 @@ export default function createCard(nom, id) {
 		`
 <div class="col-6">
 	<div class="card" style="">
-		<canvas id="myChart" width="200" height="50"></canvas>
+		<canvas class="myChart old-${id} chart-${id}" width="200" height="50"></canvas>
 		<div class="card-body pb-0">
 			<div class="dropdown mb-2">
 				<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Type de graphique</button>

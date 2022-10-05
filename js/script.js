@@ -1,6 +1,5 @@
 import createCard from './createCard.js'
 
-// const ctx = document.getElementById('myChart').getContext('2d');
 // const dropdownItems = document.querySelectorAll('.dropdown-item')
 // const formPlus = document.querySelector('#add_value')
 // const customValForm = document.querySelector('#add_custom_value')
@@ -42,6 +41,38 @@ window.addEventListener('DOMContentLoaded',  async () => {
     const data = await getDataSilo()
     console.log(data)
     data.forEach(item => createCard(item.nom, item.id))
+    const ctx = document.querySelectorAll('.myChart')
+    const dropdownItems = document.querySelectorAll('.dropdown')
+    // console.log(dropdownItems)
+
+    dropdownItems.forEach(it => {
+        const itt = [...it.children[1].children]
+
+        itt.forEach(item => {
+            item.addEventListener('click',() => {
+                currentType = item.getAttribute('data-value').toString()
+                // createChart(value, currentType)
+                const correspondingChart = item.parentElement.parentElement.parentElement.previousElementSibling
+                const newCanvas = document.createElement('canvas')
+                newCanvas.className = correspondingChart.className
+                newCanvas.setAttribute("width", correspondingChart.getAttribute('width'))
+                newCanvas.setAttribute("height", correspondingChart.getAttribute('height'))
+                correspondingChart.parentElement.insertBefore(newCanvas, correspondingChart)
+                // console.log(currentType, correspondingChart)
+                const canvasToRemove = document.querySelector("." + correspondingChart.classList[1])
+                console.log(canvasToRemove)
+                correspondingChart.parentElement.removeChild(correspondingChart.parentElement.children[1])
+                createChart(newCanvas, 8, currentType)
+                // console.log(correspondingChart.data(correspondingChart.classList[1]))
+
+            })
+        })
+    })
+
+    ctx.forEach(ct => {
+        let tot = null
+        createChart(ct, tot)
+    })
 
 })
 
@@ -79,12 +110,15 @@ function reducer(previousValue, currentValue, index) {
     return parseInt(previousValue) + parseInt(currentValue);
 }
 
-function createChart(test, chartType = 'bar') {
-    if(chart != null) {
-        chart.destroy()
-    }
+function createChart(ctx, test = 8, chartType = 'bar', chartTaker) {
+    const tt = ctx.getContext('2d')
 
-    chart = new Chart(ctx, {
+    // if(chartTaker != null) {
+        chartTaker?.destroy()
+    // }
+    // console.log(ctx)
+
+    chartTaker = new Chart(tt, {
         type: chartType,
         data: {
             labels: ['Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre'],
