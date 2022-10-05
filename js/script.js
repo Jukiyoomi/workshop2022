@@ -1,3 +1,5 @@
+import './form.js'
+
 const ctx = document.getElementById('myChart').getContext('2d');
 const dropdownItems = document.querySelectorAll('.dropdown-item')
 let value = ""
