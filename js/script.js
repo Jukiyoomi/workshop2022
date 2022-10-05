@@ -138,7 +138,7 @@ function createChart(ctx, test = 8, chartType = 'bar', chartTaker) {
         data: {
             labels: ['Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre'],
             datasets: [{
-                label: '# of Votes',
+                label: 'Quantité (en tonnes)',
                 data: [8, 3, 5, 2, 3, test],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
