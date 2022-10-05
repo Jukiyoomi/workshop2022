@@ -1,15 +1,13 @@
-// import './form.js'
-
 const ctx = document.getElementById('myChart').getContext('2d');
 const dropdownItems = document.querySelectorAll('.dropdown-item')
 const formPlus = document.querySelector('#add_value')
 const customValForm = document.querySelector('#add_custom_value')
-let currentType = ""
+let currentType = "bar"
 let value = 0
 let chart = null
 
 
-
+//Events sur les forms
 formPlus.addEventListener('submit', (e) => {
     e.preventDefault()
     const idSilo = parseInt(document.forms['add_value'].elements['id_silo'].value)
@@ -34,9 +32,8 @@ async function sendData(url, quantity, idSilo) {
         'quantite': quantity,
         'id_silo': idSilo
     })
-    // console.log(response)
-    getData().then((data) => {getTotal(data, currentType)})
-    // getTotal(response)
+    const data = await getData()
+    getTotal(data, currentType)
 }
 
 
@@ -49,7 +46,7 @@ dropdownItems.forEach(item => {
 
 window.addEventListener('DOMContentLoaded',  async () => {
     const response = await getData()
-    getTotal(response)
+    getTotal(response, currentType)
 
 })
 
@@ -59,7 +56,7 @@ async function getData() {
     return response.data
 }
 
-function getTotal(param, type = 'bar') {
+function getTotal(param, type) {
     // console.log(param)
     value = param.map(data => data.quantite).reduce(reducer)
     console.log(value)
