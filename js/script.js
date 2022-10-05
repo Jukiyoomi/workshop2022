@@ -81,7 +81,7 @@ function createChart(test, chartType = 'bar') {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
             datasets: [{
                 label: '# of Votes',
-                data: [test, 8, 3, 5, 2, 3],
+                data: [8, 3, 5, 2, 3, test],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
