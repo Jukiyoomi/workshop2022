@@ -24,13 +24,13 @@ $profil = "active";
 		<h2>Veuillez choisir votre profil</h2>
 	</div>
 	<div class="row">
-		<div class="dimension_profil col mx-4">
+		<div class="dimension_profil col mx-4 viti">
 			<img src="../../images/Viticulteur.png">
 		</div>
-		<div class="dimension_profil col">
+		<div class="dimension_profil col agri">
 			<img src="../../images/Agriculteur.png">
 		</div>
-		<div class="dimension_profil col mx-4">
+		<div class="dimension_profil col mx-4 elev">
 			<img src="../../images/Eleveur.png">
 		</div>
 	</div>

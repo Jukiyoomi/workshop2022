@@ -63,3 +63,15 @@
 	border-radius: 10px;
 	flex: 1;
 }
+
+.viti {
+	border : 0.25rem solid rgb(154, 41, 157);
+}
+
+.elev {
+	border : 0.25rem solid rgb(234, 100, 20);
+}
+
+.agri {
+	border : 0.25rem solid rgb(60, 157, 85);
+}
