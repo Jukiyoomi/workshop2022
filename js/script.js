@@ -8,8 +8,6 @@ let currentType = "bar"
 let value = 0
 let chart = null
 
-tt()
-
 //Events sur les forms
 formPlus.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -46,21 +44,21 @@ dropdownItems.forEach(item => {
 })
 
 window.addEventListener('DOMContentLoaded',  async () => {
-    // const response = await getData()
-    // getTotal(response, currentType)
+    const response = await getData()
+    getTotal(response, currentType)
     const tt = await getDataSilo()
     console.log(tt)
 
 })
 
 async function getData() {
-    const {data} = await axios.get('http://localhost/workshop2022/bdd/get_quantite_silo.php')
+    const {data} = await axios.get('http://localhost/B3/workshop2022/bdd/get_quantite_silo.php')
     // console.log(response)
     return data
 }
 
 async function getDataSilo() {
-    let {data} = await axios.get('http://localhost/workshop2022/bdd/getDataSilo.php')
+    let {data} = await axios.get('http://localhost/B3/workshop2022/bdd/getDataSilo.php')
     return data
 }
 function getTotal(param, type) {
