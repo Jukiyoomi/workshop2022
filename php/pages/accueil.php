@@ -24,6 +24,17 @@ include_once('../../bdd/DataBase.php');
 				include "../composants/navbar.php";
 				?>
 			</div>
+			
+			<div class="row">
+				<div class="col">
+					<form action="../../bdd/insert_silo" method="POST">
+						<input type="text" name="nom" size="10" placeholder="Nom">
+						<input type="text" name="type" size="10" placeholder="Type">
+						<input type="number" name="capacite_max" size="10" placeholder="Capacité maximale">
+						<button class="btn btn-primary" type="submit">Valider</button>
+					</form>
+				</div>
+			</div>
 
 			<div class="row mt-3">
 				<div class="col">

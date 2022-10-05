@@ -65,6 +65,21 @@ class DataBase
 		}
     }
 
+	function insert_silo($table, $type, $nom, $capacite_max)
+	{
+		$type = $this->prepareData($type);
+		$nom = $this->prepareData($nom);
+		$capacite_max = $this->prepareData($capacite_max);
+
+		$this->sql = "INSERT INTO " . $table . " (type, nom, capacite_max) VALUES ('" . $type. "','" . $nom . "','" . $capacite_max . "')";
+		if (mysqli_query($this->connect, $this->sql)) {
+			return true;
+		} else {
+			echo mysqli_error($this->connect);
+			return false;
+		}
+	}
+
 	public function getData($table, $id_silo){
 		/*$table = $this->prepareData($table);
 		$id_silo = $this->prepareData($id_silo);
