@@ -88,7 +88,7 @@ class DataBase
 			// output data of each row
 			for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
 		} else {
-			echo "0 results";
+			$set = "0 results";
 		}
 		
 		return $set;
