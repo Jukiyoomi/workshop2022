@@ -39,8 +39,12 @@ window.addEventListener('DOMContentLoaded',  async () => {
     // const response = await getData()
     // getTotal(response, currentType)
     const data = await getDataSilo()
-    console.log(data)
+    // console.log(data)
+    var startTime = performance.now()
     data.forEach(item => createCard(item.nom, item.id))
+    var endTime = performance.now()
+    console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)
+
     const ctx = document.querySelectorAll('.myChart')
     const dropdownItems = document.querySelectorAll('.dropdown')
     // console.log(dropdownItems)
