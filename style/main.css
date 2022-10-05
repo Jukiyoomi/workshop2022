@@ -44,7 +44,22 @@
 }
 
 .formulaire_ajout {
-	width: fit-content;
-	justify-content: center;
+	width: clamp(300px, 55%, 800px);
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 10px;
+	border-radius: 10px;
 	margin: auto;
+	background: #198754;
+	gap: 10px;
+	box-shadow: 5px 5px 5px rgba(0,0,0,.3);
+}
+.formulaire_ajout input {
+	padding: 5px;
+	outline: none;
+	border: none;
+	border-radius: 10px;
+	flex: 1;
 }
