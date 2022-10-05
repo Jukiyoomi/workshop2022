@@ -1,24 +1,71 @@
-import './form.js'
+// import './form.js'
 
 const ctx = document.getElementById('myChart').getContext('2d');
 const dropdownItems = document.querySelectorAll('.dropdown-item')
+const formPlus = document.querySelector('#add_value')
+const customValForm = document.querySelector('#add_custom_value')
+let currentType = ""
 let value = 0
 let chart = null
 
+
+
+formPlus.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const idSilo = parseInt(document.forms['add_value'].elements['id_silo'].value)
+    const quantite = parseInt(e.submitter.value)
+    // console.log(document.forms['add_value'].action, idSilo, quantite)
+    sendData(document.forms['add_value'].action, quantite, idSilo)
+})
+
+customValForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const idSilo = parseInt(document.forms['add_custom_value'].elements['id_silo'].value)
+    const quantite = parseInt(document.forms['add_custom_value'].elements['quantite'].value)
+
+    // console.log(document.forms['add_custom_value'].elements['quantite'].value, idSilo)
+    sendData(document.forms['add_value'].action, quantite, idSilo)
+})
+
+
+
+async function sendData(url, quantity, idSilo) {
+    const response = await axios.post(url, {
+        'quantite': quantity,
+        'id_silo': idSilo
+    })
+    // console.log(response)
+    getData().then((data) => {getTotal(data, currentType)})
+    // getTotal(response)
+}
+
+
 dropdownItems.forEach(item => {
     item.addEventListener('click',() => {
-
-    createChart(value, item.getAttribute('data-value').toString())
+    currentType = item.getAttribute('data-value').toString()
+    createChart(value, currentType)
     })
 })
 
-window.addEventListener('DOMContentLoaded', async () => {
-    const response = await axios.get('http://localhost/workshop2022/bdd/get_quantite_silo.php')
-    console.log(parseInt(response.data[0].quantite))
-    value = response.data.map(data => data.quantite).reduce(reducer)
-    console.log(value)
-    createChart(value)
+window.addEventListener('DOMContentLoaded',  async () => {
+    const response = await getData()
+    getTotal(response)
+
 })
+
+async function getData() {
+    const response = await axios.get('http://localhost/workshop2022/bdd/get_quantite_silo.php')
+    // console.log(response)
+    return response.data
+}
+
+function getTotal(param, type = 'bar') {
+    // console.log(param)
+    value = param.map(data => data.quantite).reduce(reducer)
+    console.log(value)
+
+    createChart(value, type)
+}
 
 function reducer(previousValue, currentValue, index) {
     // console.log(
