@@ -3,6 +3,8 @@ $accueil = "active";
 $profil = "";
 
 include_once('../../bdd/DataBase.php');
+
+
 ?>
 
 <!DOCTYPE html>
@@ -70,14 +72,6 @@ include_once('../../bdd/DataBase.php');
 						</div>
 					</div>
 				</div>
-
-				<?php
-					require ('../../bdd/getData.php');
-
-					$test = new DataBase();
-					$test = $test->getData('historique_silo', 1);
-					var_dump($test);
-				?>
 
 				<div class="col">
 					<div class="card" style="">
