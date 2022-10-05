@@ -46,6 +46,8 @@ window.addEventListener('DOMContentLoaded',  async () => {
     // console.log(dropdownItems)
 
     dropdownItems.forEach(it => {
+
+        // console.log()
         const itt = [...it.children[1].children]
 
         itt.forEach(item => {
@@ -58,15 +60,24 @@ window.addEventListener('DOMContentLoaded',  async () => {
                 newCanvas.setAttribute("width", correspondingChart.getAttribute('width'))
                 newCanvas.setAttribute("height", correspondingChart.getAttribute('height'))
                 correspondingChart.parentElement.insertBefore(newCanvas, correspondingChart)
-                // console.log(currentType, correspondingChart)
-                const canvasToRemove = document.querySelector("." + correspondingChart.classList[1])
-                console.log(canvasToRemove)
                 correspondingChart.parentElement.removeChild(correspondingChart.parentElement.children[1])
                 createChart(newCanvas, 8, currentType)
-                // console.log(correspondingChart.data(correspondingChart.classList[1]))
 
             })
         })
+
+        const correspondingForm = it.parentElement.children[3]
+        const correspondingId = correspondingForm.children['id_silo'].value
+
+        // console.log(correspondingForm, correspondingId)
+
+        correspondingForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const quantite = parseInt(e.submitter.value)
+            console.log(correspondingId, quantite, correspondingForm.getAttribute('action'))
+            sendData(correspondingForm.getAttribute('action'), quantite, correspondingId)
+        })
+
     })
 
     ctx.forEach(ct => {
@@ -81,18 +92,18 @@ async function sendData(url, quantity, idSilo) {
         'quantite': quantity,
         'id_silo': idSilo
     })
-    const data = await getData()
-    getTotal(data, currentType)
+    // const data = await getData()
+    // getTotal(data, currentType)
 }
 
 async function getData() {
-    const {data} = await axios.get('http://localhost/B3/workshop2022/bdd/get_quantite_silo.php')
+    const {data} = await axios.get('http://localhost/workshop2022/bdd/get_quantite_silo.php')
     // console.log(response)
     return data
 }
 
 async function getDataSilo() {
-    let {data} = await axios.get('http://localhost/B3/workshop2022/bdd/getDataSilo.php')
+    let {data} = await axios.get('http://localhost/workshop2022/bdd/getDataSilo.php')
     return data
 }
 function getTotal(param, type) {
