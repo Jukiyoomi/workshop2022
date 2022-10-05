@@ -83,3 +83,8 @@
 .agri {
 	border : 0.25rem solid rgb(60, 157, 85);
 }
+
+.supprimer {
+	display: flex;
+	margin-left: auto;
+}
