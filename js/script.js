@@ -2,7 +2,7 @@ import './form.js'
 
 const ctx = document.getElementById('myChart').getContext('2d');
 const dropdownItems = document.querySelectorAll('.dropdown-item')
-let value = ""
+let value = 0
 let chart = null
 
 dropdownItems.forEach(item => {
@@ -14,11 +14,20 @@ dropdownItems.forEach(item => {
 
 window.addEventListener('DOMContentLoaded', async () => {
     const response = await axios.get('http://localhost/workshop2022/bdd/get_quantite_silo.php')
-    console.log(response)
-    createChart()
+    console.log(parseInt(response.data[0].quantite))
+    value = response.data.map(data => data.quantite).reduce(reducer)
+    console.log(value)
+    createChart(value)
 })
 
-function createChart(chartType = 'bar') {
+function reducer(previousValue, currentValue, index) {
+    // console.log(
+    //     `previousValue: ${previousValue}, currentValue: ${currentValue}, index: ${index}, returns: ${returns}`,
+    // );
+    return parseInt(previousValue) + parseInt(currentValue);
+}
+
+function createChart(test, chartType = 'bar') {
     if(chart != null) {
         chart.destroy()
     }
@@ -28,7 +37,7 @@ function createChart(chartType = 'bar') {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
             datasets: [{
                 label: '# of Votes',
-                data: [6, 8, 3, 5, 2, 3],
+                data: [test, 8, 3, 5, 2, 3],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
