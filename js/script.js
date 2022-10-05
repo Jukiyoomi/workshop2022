@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded',  async () => {
 })
 
 async function getData() {
-    const response = await axios.get('http://localhost/workshop2022/bdd/get_quantite_silo.php')
+    const response = await axios.get('http://localhost/B3/workshop2022/bdd/get_quantite_silo.php')
     // console.log(response)
     return response.data
 }
