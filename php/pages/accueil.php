@@ -40,7 +40,7 @@ require_once('../../bdd/DataBase.php');
 							</div>
 							<h5 class="card-title">Silo 1</h5>
 							<p class="card-text">
-								<form action="../bdd/insert_quantite_silo.php" id="add_value" class="row" method="POST">
+								<form action="../../bdd/insert_quantite_silo.php" id="add_value" class="row" method="POST">
 									<div class="col btn_center">
 										<button type="submit" class="btn btn-success" name="quantite" value="1">+1</button>
 										<button type="submit" class="btn btn-success" name="quantite" value="2">+2</button>
@@ -57,11 +57,11 @@ require_once('../../bdd/DataBase.php');
 									</div>
 									<input type="hidden" value="1" name="id_silo"/>
 								</form>
-								<form action="../bdd/insert_quantite_silo.php" method="POST">
+								<form action="../../bdd/insert_quantite_silo.php" id="add_custom_value" method="POST">
 									<div class="row">
 										<div class="col mt-3">
-											<input type="text" name="quantite" size="10" placeholder="Personnalisé">
-											<button class="btn btn-primary">Valider</button>
+											<input type="number" name="quantite" size="10" placeholder="Personnalisé">
+											<button class="btn btn-primary" type="submit">Valider</button>
 										</div>
 									</div>
 									<input type="hidden" value="1" name="id_silo"/>

@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Content-Type");
-require "../../bdd/DataBase.php";
+require "DataBase.php";
 $db = new DataBase();
 $data = json_decode(file_get_contents("php://input"));
 if (isset($data->id_silo) && isset($data->quantite)) {
