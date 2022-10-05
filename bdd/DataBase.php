@@ -81,15 +81,12 @@ class DataBase
 
 		if ($result->num_rows > 0) {
 			// output data of each row
-			while($row = mysqli_fetch_array($result)) {
-				$tab[] = $row['quantite'];
-			}
+			for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
 		} else {
 			echo "0 results";
 		}
-//		$conn->close();
-
-		return $tab;
+		
+		return $set;
 	}
 
 }
