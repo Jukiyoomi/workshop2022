@@ -1,6 +1,6 @@
 const container = document.querySelector('.containerjs')
 
-export default function createCard(param) {
+export default function createCard(nom, id) {
 	container.innerHTML += 
 		`
 <div class="col-6">
@@ -15,7 +15,7 @@ export default function createCard(param) {
 					<li class="dropdown-item" data-value="doughnut">Secteur</li>
 				</ul>
 			</div>
-			<h5 class="card-title">Silo 1</h5>
+			<h5 class="card-title">${nom}</h5>
 			<p class="card-text">
 				<form action="../../bdd/insert_quantite_silo.php" id="add_value" class="row" method="POST">
 					<div class="col btn_center">
@@ -32,7 +32,7 @@ export default function createCard(param) {
 						<button type="submit" class="btn btn-danger my-1" name="quantite" value="-10">-10</button>
 						<button type="submit" class="btn btn-danger my-1" name="quantite" value="-50">-50</button>
 					</div>
-					<input type="hidden" value="1" name="id_silo"/>
+					<input type="hidden" value="${id}" name="id_silo"/>
 				</form>
 				<form action="../../bdd/insert_quantite_silo.php" id="add_custom_value" method="POST">
 					<div class="row">
@@ -41,7 +41,7 @@ export default function createCard(param) {
 							<button class="btn btn-primary" type="submit">Valider</button>
 						</div>
 					</div>
-				<input type="hidden" value="1" name="id_silo"/>
+				<input type="hidden" value="${id}" name="id_silo"/>
 				</form>
 			</p>
 		</div>
