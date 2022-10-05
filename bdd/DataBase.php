@@ -108,4 +108,15 @@ class DataBase
 		return $set;
 	}
 
+	function delete($table, $id){
+		$table2 = "historique_" + $table;
+		$sql = "DELETE FROM " . $table . " WHERE id = " . $id ." UNION DELETE FROM " . $table2 . " WHERE id_silo = '" . $id ."'";
+		if (mysqli_query($this->connect, $sql)) {
+			return true;
+		} else {
+			return false;
+		}
+		mysqli_close($this->connect);
+	}
+
 }

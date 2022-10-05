@@ -83,3 +83,12 @@
 .agri {
 	border : 0.25rem solid rgb(60, 157, 85);
 }
+
+.supprimer {
+	display: flex;
+	margin-left: auto;
+}
+
+.card_css {
+	box-shadow: 5px 5px 5px rgba(0,0,0,.1);
+}

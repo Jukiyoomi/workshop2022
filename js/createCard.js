@@ -4,7 +4,7 @@ export default function createCard(nom, id) {
 	container.innerHTML += 
 		`
 <div class="col-6">
-	<div class="card" style="">
+	<div class="card card_css" style="">
 		<canvas class="myChart old-${id} chart-${id}" width="200" height="50"></canvas>
 		<div class="card-body pb-0">
 			<div class="dropdown mb-2">
@@ -34,15 +34,20 @@ export default function createCard(nom, id) {
 					</div>
 					<input type="hidden" value="${id}" name="id_silo"/>
 				</form>
-				<form action="../../bdd/insert_quantite_silo.php" id="add_custom_value" method="POST">
-					<div class="row">
-						<div class="col mt-3">
-							<input type="number" name="quantite" size="10" placeholder="Personnalisé">
-							<button class="btn btn-primary" type="submit">Valider</button>
-						</div>
+				<div class="row">
+				<div class="col mt-3">
+					<form action="../../bdd/insert_quantite_silo.php" id="add_custom_value" method="POST">
+						<input type="number" name="quantite" size="10" placeholder="Personnalisé">
+						<button class="btn btn-primary" type="submit">Valider</button>
+				</div>
+					<input type="hidden" value="${id}" name="id_silo"/>
+					</form>
+					<div class="col mt-3">
+						<form action="">
+							<button class="btn btn-danger supprimer" type="submit">Supprimer</button>
 					</div>
-				<input type="hidden" value="${id}" name="id_silo"/>
-				</form>
+						</form>
+				</div>
 			</p>
 		</div>
 	</div>
