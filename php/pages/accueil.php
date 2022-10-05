@@ -35,8 +35,8 @@ include_once('../../bdd/DataBase.php');
 									Type de graphique
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-									<li class="dropdown-item" data-value="line">Courbe</li>
 									<li class="dropdown-item" data-value="bar">Barre</li>
+									<li class="dropdown-item" data-value="line">Courbe</li>
 									<li class="dropdown-item" data-value="doughnut">Secteur</li>
 								</ul>
 							</div>

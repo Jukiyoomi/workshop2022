@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     createChart()
 })
 
-function createChart(chartType = 'line') {
+function createChart(chartType = 'bar') {
     if(chart != null) {
         chart.destroy()
     }
