@@ -88,3 +88,7 @@
 	display: flex;
 	margin-left: auto;
 }
+
+.card_css {
+	box-shadow: 5px 5px 5px rgba(0,0,0,.1);
+}
