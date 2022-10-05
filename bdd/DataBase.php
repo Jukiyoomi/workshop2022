@@ -81,16 +81,6 @@ class DataBase
 	}
 
 	public function getData($table, $id_silo){
-		/*$table = $this->prepareData($table);
-		$id_silo = $this->prepareData($id_silo);
-		$this->sql = "select * from " . $table . " where id_silo = '" . $id_silo . "'";
-		$result = mysqli_query($this->connect, $this->sql);
-		$row = mysqli_fetch_assoc($result);
-		if (mysqli_num_rows($result) != 0) {
-			$result = $row['result'];
-		}
-		return $result;*/
-
 		$this->sql = "SELECT * FROM " . $table . " WHERE id_silo = '" . $id_silo . "'";
 		$result = mysqli_query($this->dbConnect(), $this->sql);
 
@@ -101,6 +91,20 @@ class DataBase
 			echo "0 results";
 		}
 		
+		return $set;
+	}
+
+	public function getData_silo($table, $id_silo){
+		$this->sql = "SELECT * FROM " . $table . " WHERE id = '" . $id_silo . "'";
+		$result = mysqli_query($this->dbConnect(), $this->sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
+		} else {
+			echo "0 results";
+		}
+
 		return $set;
 	}
 
