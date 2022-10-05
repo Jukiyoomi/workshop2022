@@ -109,7 +109,8 @@ class DataBase
 	}
 
 	function delete($table, $id){
-		$sql = "DELETE FROM " . $table . " WHERE id = '" . $id ."'";
+		$table2 = "historique_" + $table;
+		$sql = "DELETE FROM " . $table . " WHERE id = " . $id ." UNION DELETE FROM " . $table2 . " WHERE id_silo = '" . $id ."'";
 		if (mysqli_query($this->connect, $sql)) {
 			return true;
 		} else {
