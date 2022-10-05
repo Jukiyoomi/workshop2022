@@ -8,7 +8,7 @@ let chart = null
 dropdownItems.forEach(item => {
     item.addEventListener('click',() => {
 
-    createChart(item.getAttribute('data-value').toString())
+    createChart(value, item.getAttribute('data-value').toString())
     })
 })
 
