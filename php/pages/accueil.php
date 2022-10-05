@@ -36,7 +36,7 @@ include_once('../../bdd/DataBase.php');
 				</div>
 			</div>
 
-			<div class="row mt-3">
+			<div class="row mt-3 containerjs">
 				<div class="col-6">
 					<div class="card" style="">
 						<canvas id="myChart" width="200" height="50"></canvas>
