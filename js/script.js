@@ -12,7 +12,11 @@ dropdownItems.forEach(item => {
     })
 })
 
-window.addEventListener('DOMContentLoaded', () => createChart())
+window.addEventListener('DOMContentLoaded', async () => {
+    const response = await axios.get('http://localhost/workshop2022/bdd/get_quantite_silo.php')
+    console.log(response)
+    createChart()
+})
 
 function createChart(chartType = 'line') {
     if(chart != null) {

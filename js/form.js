@@ -10,7 +10,7 @@ formPlus.addEventListener('submit', (e) => {
 	const idSilo = parseInt(document.forms['add_value'].elements['id_silo'].value)
 	const quantite = parseInt(e.submitter.value)
 	console.log(document.forms['add_value'].action)
-	sendData(document.forms['add_value'].action, quantite, idSilo)
+	// sendData(document.forms['add_value'].action, quantite, idSilo)
 })
 
 customValForm.addEventListener('submit', (e) => {
