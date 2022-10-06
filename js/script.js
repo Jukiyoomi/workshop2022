@@ -4,9 +4,6 @@ let currentType = "bar"
 let value = 0
 let chart = null
 
-
-
-
 window.addEventListener('DOMContentLoaded',  async () => {
     let startTime = performance.now()
     const data = await getDataSilo()
@@ -86,9 +83,10 @@ window.addEventListener('DOMContentLoaded',  async () => {
         })
 
         const correspondingForm = it.parentElement.children[3]
+        const correspondingCustomForm = it.parentElement.children[4].children[0].children[0]
         const correspondingId = correspondingForm.children['id_silo'].value
 
-        // console.log(correspondingForm, correspondingId)
+        console.log(correspondingCustomForm)
 
         correspondingForm.addEventListener('submit', (e) => {
             e.preventDefault()
@@ -99,6 +97,31 @@ window.addEventListener('DOMContentLoaded',  async () => {
                     getData(correspondingId)
                         .then((data) => {
                             // getTotal(data, "bar")
+                            console.log(data)
+                            const correspondingChart = correspondingForm.parentElement.previousElementSibling
+                            const newCanvas = document.createElement('canvas')
+                            newCanvas.className = correspondingChart.className
+                            newCanvas.setAttribute("width", correspondingChart.getAttribute('width'))
+                            newCanvas.setAttribute("height", correspondingChart.getAttribute('height'))
+                            correspondingChart.parentElement.insertBefore(newCanvas, correspondingChart)
+                            correspondingChart.parentElement.removeChild(correspondingChart.parentElement.children[1])
+                            // createChart(newCanvas, 8, currentType)
+                            getTotal(newCanvas, data, currentType)
+                            console.log(correspondingChart)
+
+                        })
+                })
+        })
+
+        correspondingCustomForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const quantite = parseFloat(correspondingCustomForm.children[0].value)
+            console.log(quantite, correspondingCustomForm.getAttribute('action'))
+            if(quantite == 0 || quantite == undefined || quantite == null || isNaN(quantite)) console.log("no number")
+            sendData(correspondingForm.getAttribute('action'), quantite, correspondingId)
+                .then(() => {
+                    getData(correspondingId)
+                        .then((data) => {
                             console.log(data)
                             const correspondingChart = correspondingForm.parentElement.previousElementSibling
                             const newCanvas = document.createElement('canvas')
