@@ -71,6 +71,7 @@ window.addEventListener('DOMContentLoaded',  async () => {
                 currentType = item.getAttribute('data-value').toString()
                 // createChart(value, currentType)
                 const correspondingChart = item.parentElement.parentElement.parentElement.previousElementSibling
+                item.parentElement.setAttribute('data-current', currentType)
                 const newCanvas = document.createElement('canvas')
                 newCanvas.className = correspondingChart.className
                 newCanvas.setAttribute("width", correspondingChart.getAttribute('width'))
@@ -106,8 +107,11 @@ window.addEventListener('DOMContentLoaded',  async () => {
                             correspondingChart.parentElement.insertBefore(newCanvas, correspondingChart)
                             correspondingChart.parentElement.removeChild(correspondingChart.parentElement.children[1])
                             // createChart(newCanvas, 8, currentType)
+                            const correspondingCurrentType = correspondingForm.previousElementSibling.previousElementSibling.previousElementSibling.children[1].getAttribute('data-current')
+                            // const correspondingCurrentType = correspondingForm.parentElement.children[2].children[1]
+
+                            console.log(correspondingCurrentType)
                             getTotal(newCanvas, data, currentType)
-                            console.log(correspondingChart)
 
                         })
                 })
