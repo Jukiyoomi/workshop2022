@@ -1,9 +1,14 @@
 const container = document.querySelector('.containerjs')
 
-export default function createCard(nom, id) {
+export function cleanContainer() {
+	container.innerHTML = ""
+}
+
+export function createCard(nom, id) {
+	// container.innerHTML = ""
 	container.innerHTML += 
 		`
-<div class="col-6">
+<div class="col-6 card-${id}">
 	<div class="card card_css mb-4" style="">
 		<canvas class="myChart old-${id} chart-${id}" width="200" height="50"></canvas>
 		<div class="card-body pb-0">
@@ -43,10 +48,10 @@ export default function createCard(nom, id) {
 					<input type="hidden" value="${id}" name="id_silo"/>
 					</form>
 					<div class="col mt-3">
-						<form action="../../bdd/delete_silo.php" method="post">
+						<form action="../../bdd/delete_silo.php" method="post" class="form-supp">
 							<button class="btn btn-danger supprimer" type="submit" name="id" value="${id}">Supprimer</button>
-					</div>
 						</form>
+					</div>
 				</div>
 			</p>
 		</div>

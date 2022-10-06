@@ -1,4 +1,4 @@
-import createCard from './createCard.js'
+import {createCard, cleanContainer} from './createCard.js'
 
 // const dropdownItems = document.querySelectorAll('.dropdown-item')
 // const formPlus = document.querySelector('#add_value')
@@ -40,14 +40,44 @@ window.addEventListener('DOMContentLoaded',  async () => {
     // getTotal(response, currentType)
     const data = await getDataSilo()
     // console.log(data)
-    var startTime = performance.now()
-    data.forEach(item => createCard(item.nom, item.id))
-    var endTime = performance.now()
+    let startTime = performance.now()
+    cleanContainer()
+    if(Array.isArray(data)) {
+        data.forEach(item => createCard(item.nom, item.id))
+    }
+    let endTime = performance.now()
     console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)
 
     const ctx = document.querySelectorAll('.myChart')
     const dropdownItems = document.querySelectorAll('.dropdown')
+    const deleteBtns = document.querySelectorAll('.form-supp')
     // console.log(dropdownItems)
+
+    deleteBtns.forEach(btn => {
+        btn.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const idSilo = parseInt(btn.parentElement.parentElement.parentElement.children[3].lastElementChild.value)
+
+            deleteSilo(idSilo).then((response) => {
+                // cleanContainer()
+                if(Array.isArray(data)) {
+                    const filteredData = data.filter(d => parseInt(d.id) !== idSilo)
+                    // console.log(filteredData)
+                    // console.log(document.querySelector(`.card-${idSilo}`))
+                    document
+                        .querySelector('.containerjs')
+                        .removeChild(
+                            document
+                                .querySelector(`.card-${idSilo}`)
+                        )
+                }
+
+
+                // console.log(data.some(d => d.id == idSilo))
+            })
+
+        })
+    })
 
     dropdownItems.forEach(it => {
 
@@ -91,6 +121,14 @@ window.addEventListener('DOMContentLoaded',  async () => {
 
 })
 
+async function deleteSilo(id) {
+    const {data} = await axios.post('http://localhost/workshop2022/bdd/delete_silo.php', {
+        id_silo: id
+    })
+    // console.log(response)
+    return data
+}
+
 async function sendData(url, quantity, idSilo) {
     const response = await axios.post(url, {
         'quantite': quantity,
@@ -101,13 +139,13 @@ async function sendData(url, quantity, idSilo) {
 }
 
 async function getData() {
-    const {data} = await axios.get('http://localhost/B3/workshop2022/bdd/get_quantite_silo.php')
+    const {data} = await axios.get('http://localhost/workshop2022/bdd/get_quantite_silo.php')
     // console.log(response)
     return data
 }
 
 async function getDataSilo() {
-    let {data} = await axios.get('http://localhost/B3/workshop2022/bdd/getDataSilo.php')
+    let {data} = await axios.get('http://localhost/workshop2022/bdd/getDataSilo.php')
     return data
 }
 function getTotal(param, type) {
