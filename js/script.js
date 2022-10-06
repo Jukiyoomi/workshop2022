@@ -1,29 +1,9 @@
 import {createCard, cleanContainer} from './createCard.js'
 
-// const dropdownItems = document.querySelectorAll('.dropdown-item')
-// const formPlus = document.querySelector('#add_value')
-// const customValForm = document.querySelector('#add_custom_value')
 let currentType = "bar"
 let value = 0
 let chart = null
 
-//Events sur les forms
-// formPlus.addEventListener('submit', (e) => {
-//     e.preventDefault()
-//     const idSilo = parseInt(document.forms['add_value'].elements['id_silo'].value)
-//     const quantite = parseInt(e.submitter.value)
-//     // console.log(document.forms['add_value'].action, idSilo, quantite)
-//     sendData(document.forms['add_value'].action, quantite, idSilo)
-// })
-
-// customValForm.addEventListener('submit', (e) => {
-//     e.preventDefault()
-//     const idSilo = parseInt(document.forms['add_custom_value'].elements['id_silo'].value)
-//     const quantite = parseInt(document.forms['add_custom_value'].elements['quantite'].value)
-//
-//     // console.log(document.forms['add_custom_value'].elements['quantite'].value, idSilo)
-//     sendData(document.forms['add_value'].action, quantite, idSilo)
-// })
 
 
 
@@ -45,14 +25,10 @@ window.addEventListener('DOMContentLoaded',  async () => {
         getData(idCard)
             .then((res) => {
                 if(Array.isArray(res)) {
-                    // console.log("array")
-                    // res.sort((a, b) => a.id_silo - b.id_silo )
                     getTotal(card.querySelector('.myChart'), res, 'bar')
                 } else {
-
+                    getTotal(card.querySelector('.myChart'), 0, 'bar')
                 }
-                getTotal(card.querySelector('.myChart'), 0, 'bar')
-                // console.log("not array")
             })
     })
 
@@ -199,6 +175,18 @@ function createChart(ctx, test = 8, chartType = 'bar', chartTaker) {
         chartTaker?.destroy()
     // }
     // console.log(ctx)
+    // console.log(new Array(5).map(d => Math.floor(Math.random() * 15) + 1))
+
+    let randomVals = []
+        // new Array(5).map(d => Math.floor(Math.random() * 15) + 1)
+
+    for (let i = 0; i < 4; i++) {
+        // randomVals.push(Math.floor(Math.random() * 15) + 1)
+        randomVals = [...randomVals, Math.floor(Math.random() * 15) + 1]
+    }
+
+
+    console.log(randomVals)
 
     chartTaker = new Chart(tt, {
         type: chartType,
@@ -206,7 +194,7 @@ function createChart(ctx, test = 8, chartType = 'bar', chartTaker) {
             labels: ['Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre'],
             datasets: [{
                 label: 'Quantité (en tonnes)',
-                data: [8, 3, 5, 2, 3, test],
+                data: [...randomVals, test],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
