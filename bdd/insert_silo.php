@@ -1,9 +1,11 @@
 <?php
 require "DataBase.php";
 $db = new DataBase();
-if (isset($_POST['type']) && isset($_POST['nom']) && isset($_POST['capacite_max'])) {
+$data = json_decode(file_get_contents("php://input"));
+
+if (isset($data->type) && isset($data->nom) && isset($data->capacite_max)) {
 	if ($db->dbConnect()) {
-		if ($db->insert_silo("silo", $_POST['type'], $_POST['nom'], $_POST['capacite_max'])) {
+		if ($db->insert_silo("silo", $data->type, $data->nom, $data->capacite_max)) {
 			echo "Insertion réussie";
 		} else echo "Insertion fail";
 	} else echo "Error: Database connection";
