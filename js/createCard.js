@@ -8,7 +8,7 @@ export function createCard(nom, id) {
 	// container.innerHTML = ""
 	container.innerHTML += 
 		`
-<div class="col-6 card-${id}">
+<div class="col-12 col-md-6 card-${id}">
 	<div class="card card_css mb-4" style="">
 		<canvas class="myChart old-${id} chart-${id}" width="200" height="50"></canvas>
 		<div class="card-body pb-0">
