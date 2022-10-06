@@ -14,7 +14,7 @@ export function createCard(nom, id) {
 		<div class="card-body pb-0">
 			<div class="dropdown mb-2">
 				<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Type de graphique</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" data-current="bar">
 					<li class="dropdown-item" data-value="bar">Barre</li>
 					<li class="dropdown-item" data-value="line">Courbe</li>
 					<li class="dropdown-item" data-value="doughnut">Secteur</li>

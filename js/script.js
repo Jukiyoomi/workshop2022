@@ -30,8 +30,6 @@ window.addEventListener('DOMContentLoaded',  async () => {
     })
 
 
-
-    // const ctx = document.querySelectorAll('.myChart')
     const dropdownItems = document.querySelectorAll('.dropdown')
     const deleteBtns = document.querySelectorAll('.form-supp')
 
@@ -143,22 +141,12 @@ window.addEventListener('DOMContentLoaded',  async () => {
         })
 
     })
-
-    // ctx.forEach(ct => {
-    //     let tot = null
-    //     createChart(ct, tot)
-    // })
-    // for (let i = 0; i < ctx.length; i++) {
-    //     createChart(ctx[i], response[i].quantite, 'bar')
-    // }
-
 })
 
 async function deleteSilo(id) {
     const {data} = await axios.post('http://localhost/workshop2022/bdd/delete_silo.php', {
         id_silo: id
     })
-    // console.log(response)
     return data
 }
 
@@ -167,15 +155,20 @@ async function sendData(url, quantity, idSilo) {
         'quantite': quantity,
         'id_silo': idSilo
     })
-    // const data = await getData()
-    // getTotal(data, currentType)
+}
+
+async function createSilo(type, nom, capaciteMax) {
+    const response = await axios.post('http://localhost/workshop2022/bdd/insert_silo.php', {
+        'type': type,
+        'nom': nom,
+        'capacite_max': capaciteMax
+    })
 }
 
 async function getData(id) {
     const {data} = await axios.post('http://localhost/workshop2022/bdd/get_quantite_silo.php', {
         id_silo: id
     })
-    // console.log(response)
     return data
 }
 
@@ -183,6 +176,7 @@ async function getDataSilo() {
     let {data} = await axios.get('http://localhost/workshop2022/bdd/getDataSilo.php')
     return data
 }
+
 function getTotal(canvas, param, type) {
     // console.log(param)
     value = parseInt(Array.isArray(param) ? param.map(data => data.quantite).reduce(reducer) : 0)
@@ -201,14 +195,10 @@ function createChart(ctx, test = 8, chartType = 'bar', chartTaker) {
     // if(chartTaker != null) {
         chartTaker?.destroy()
     // }
-    // console.log(ctx)
-    // console.log(new Array(5).map(d => Math.floor(Math.random() * 15) + 1))
 
     let randomVals = []
-        // new Array(5).map(d => Math.floor(Math.random() * 15) + 1)
 
     for (let i = 0; i <= 4; i++) {
-        // randomVals.push(Math.floor(Math.random() * 15) + 1)
         randomVals = [...randomVals, Math.floor(Math.random() * 15) + 1]
     }
 
