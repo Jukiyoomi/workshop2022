@@ -144,7 +144,7 @@ window.addEventListener('DOMContentLoaded',  async () => {
 })
 
 async function deleteSilo(id) {
-    const {data} = await axios.post('http://localhost/workshop2022/bdd/delete_silo.php', {
+    const {data} = await axios.post('http://localhost/B3/workshop2022/bdd/delete_silo.php', {
         id_silo: id
     })
     return data
@@ -157,23 +157,15 @@ async function sendData(url, quantity, idSilo) {
     })
 }
 
-async function createSilo(type, nom, capaciteMax) {
-    const response = await axios.post('http://localhost/workshop2022/bdd/insert_silo.php', {
-        'type': type,
-        'nom': nom,
-        'capacite_max': capaciteMax
-    })
-}
-
 async function getData(id) {
-    const {data} = await axios.post('http://localhost/workshop2022/bdd/get_quantite_silo.php', {
+    const {data} = await axios.post('http://localhost/B3/workshop2022/bdd/get_quantite_silo.php', {
         id_silo: id
     })
     return data
 }
 
 async function getDataSilo() {
-    let {data} = await axios.get('http://localhost/workshop2022/bdd/getDataSilo.php')
+    let {data} = await axios.get('http://localhost/B3/workshop2022/bdd/getDataSilo.php')
     return data
 }
 
