@@ -45,14 +45,14 @@ window.addEventListener('DOMContentLoaded',  async () => {
         getData(idCard)
             .then((res) => {
                 if(Array.isArray(res)) {
-                    console.log("array")
+                    // console.log("array")
                     // res.sort((a, b) => a.id_silo - b.id_silo )
                     getTotal(card.querySelector('.myChart'), res, 'bar')
                 } else {
 
                 }
                 getTotal(card.querySelector('.myChart'), 0, 'bar')
-                console.log("not array")
+                // console.log("not array")
             })
     })
 
@@ -123,6 +123,7 @@ window.addEventListener('DOMContentLoaded',  async () => {
                     getData(correspondingId)
                         .then((data) => {
                             // getTotal(data, "bar")
+                            console.log(data)
                             const correspondingChart = correspondingForm.parentElement.previousElementSibling
                             const newCanvas = document.createElement('canvas')
                             newCanvas.className = correspondingChart.className
@@ -131,7 +132,7 @@ window.addEventListener('DOMContentLoaded',  async () => {
                             correspondingChart.parentElement.insertBefore(newCanvas, correspondingChart)
                             correspondingChart.parentElement.removeChild(correspondingChart.parentElement.children[1])
                             // createChart(newCanvas, 8, currentType)
-                            getTotal(newCanvas, 8, currentType)
+                            getTotal(newCanvas, data, currentType)
                             console.log(correspondingChart)
 
                         })
@@ -181,7 +182,7 @@ async function getDataSilo() {
 }
 function getTotal(canvas, param, type) {
     // console.log(param)
-    value = Array.isArray(param) ? param.map(data => data.quantite).reduce(reducer) : 0
+    value = parseInt(Array.isArray(param) ? param.map(data => data.quantite).reduce(reducer) : 0)
     console.log(value)
 
     createChart(canvas, value, type)
