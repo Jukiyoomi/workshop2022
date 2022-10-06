@@ -27,20 +27,9 @@ let chart = null
 
 
 
-
-// dropdownItems.forEach(item => {
-//     item.addEventListener('click',() => {
-//     currentType = item.getAttribute('data-value').toString()
-//     createChart(value, currentType)
-//     })
-// })
-
 window.addEventListener('DOMContentLoaded',  async () => {
-    // const response = await getData()
-    // getTotal(response, currentType)
     let startTime = performance.now()
     const data = await getDataSilo()
-    // console.log(data)
     cleanContainer()
     if(Array.isArray(data)) {
         data.forEach(item => createCard(item.nom, item.id))
@@ -48,10 +37,30 @@ window.addEventListener('DOMContentLoaded',  async () => {
     let endTime = performance.now()
     console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)
 
-    const ctx = document.querySelectorAll('.myChart')
+    const allCards = document.querySelectorAll('.card')
+
+    allCards.forEach(card => {
+        const idCard = parseInt(card.querySelector('[type="hidden"]').getAttribute('value'))
+
+        getData(idCard)
+            .then((res) => {
+                if(Array.isArray(res)) {
+                    console.log("array")
+                    // res.sort((a, b) => a.id_silo - b.id_silo )
+                    getTotal(card.querySelector('.myChart'), res, 'bar')
+                } else {
+
+                }
+                getTotal(card.querySelector('.myChart'), 0, 'bar')
+                console.log("not array")
+            })
+    })
+
+
+
+    // const ctx = document.querySelectorAll('.myChart')
     const dropdownItems = document.querySelectorAll('.dropdown')
     const deleteBtns = document.querySelectorAll('.form-supp')
-    // console.log(dropdownItems)
 
     deleteBtns.forEach(btn => {
         btn.addEventListener('submit', (e) => {
@@ -110,14 +119,34 @@ window.addEventListener('DOMContentLoaded',  async () => {
             const quantite = parseInt(e.submitter.value)
             console.log(correspondingId, quantite, correspondingForm.getAttribute('action'))
             sendData(correspondingForm.getAttribute('action'), quantite, correspondingId)
+                .then(() => {
+                    getData(correspondingId)
+                        .then((data) => {
+                            // getTotal(data, "bar")
+                            const correspondingChart = correspondingForm.parentElement.previousElementSibling
+                            const newCanvas = document.createElement('canvas')
+                            newCanvas.className = correspondingChart.className
+                            newCanvas.setAttribute("width", correspondingChart.getAttribute('width'))
+                            newCanvas.setAttribute("height", correspondingChart.getAttribute('height'))
+                            correspondingChart.parentElement.insertBefore(newCanvas, correspondingChart)
+                            correspondingChart.parentElement.removeChild(correspondingChart.parentElement.children[1])
+                            // createChart(newCanvas, 8, currentType)
+                            getTotal(newCanvas, 8, currentType)
+                            console.log(correspondingChart)
+
+                        })
+                })
         })
 
     })
 
-    ctx.forEach(ct => {
-        let tot = null
-        createChart(ct, tot)
-    })
+    // ctx.forEach(ct => {
+    //     let tot = null
+    //     createChart(ct, tot)
+    // })
+    // for (let i = 0; i < ctx.length; i++) {
+    //     createChart(ctx[i], response[i].quantite, 'bar')
+    // }
 
 })
 
@@ -138,8 +167,10 @@ async function sendData(url, quantity, idSilo) {
     // getTotal(data, currentType)
 }
 
-async function getData() {
-    const {data} = await axios.get('http://localhost/workshop2022/bdd/get_quantite_silo.php')
+async function getData(id) {
+    const {data} = await axios.post('http://localhost/workshop2022/bdd/get_quantite_silo.php', {
+        id_silo: id
+    })
     // console.log(response)
     return data
 }
@@ -148,18 +179,15 @@ async function getDataSilo() {
     let {data} = await axios.get('http://localhost/workshop2022/bdd/getDataSilo.php')
     return data
 }
-function getTotal(param, type) {
+function getTotal(canvas, param, type) {
     // console.log(param)
-    value = param.map(data => data.quantite).reduce(reducer)
+    value = Array.isArray(param) ? param.map(data => data.quantite).reduce(reducer) : 0
     console.log(value)
 
-    createChart(value, type)
+    createChart(canvas, value, type)
 }
 
 function reducer(previousValue, currentValue, index) {
-    // console.log(
-    //     `previousValue: ${previousValue}, currentValue: ${currentValue}, index: ${index}, returns: ${returns}`,
-    // );
     return parseInt(previousValue) + parseInt(currentValue);
 }
 

@@ -12,13 +12,14 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$tab = array();
 
-$sql = new DataBase();
-
-$tab = $sql->getData('historique_silo', '1');
-
-return $tab;
+//$tab = array();
+//
+//$sql = new DataBase();
+//
+//$tab = $sql->getData('historique_silo', '1');
+//
+//return $tab;
 
 /*$sql = new DataBase();
 
