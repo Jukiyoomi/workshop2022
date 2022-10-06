@@ -43,8 +43,8 @@ export default function createCard(nom, id) {
 					<input type="hidden" value="${id}" name="id_silo"/>
 					</form>
 					<div class="col mt-3">
-						<form action="">
-							<button class="btn btn-danger supprimer" type="submit">Supprimer</button>
+						<form action="../../bdd/delete_silo.php" method="post">
+							<button class="btn btn-danger supprimer" type="submit" name="id" value="${id}">Supprimer</button>
 					</div>
 						</form>
 				</div>

@@ -101,13 +101,13 @@ async function sendData(url, quantity, idSilo) {
 }
 
 async function getData() {
-    const {data} = await axios.get('http://localhost/workshop2022/bdd/get_quantite_silo.php')
+    const {data} = await axios.get('http://localhost/B3/workshop2022/bdd/get_quantite_silo.php')
     // console.log(response)
     return data
 }
 
 async function getDataSilo() {
-    let {data} = await axios.get('http://localhost/workshop2022/bdd/getDataSilo.php')
+    let {data} = await axios.get('http://localhost/B3/workshop2022/bdd/getDataSilo.php')
     return data
 }
 function getTotal(param, type) {
