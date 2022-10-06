@@ -180,7 +180,7 @@ function createChart(ctx, test = 8, chartType = 'bar', chartTaker) {
     let randomVals = []
         // new Array(5).map(d => Math.floor(Math.random() * 15) + 1)
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i <= 4; i++) {
         // randomVals.push(Math.floor(Math.random() * 15) + 1)
         randomVals = [...randomVals, Math.floor(Math.random() * 15) + 1]
     }
