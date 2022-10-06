@@ -38,9 +38,9 @@ let chart = null
 window.addEventListener('DOMContentLoaded',  async () => {
     // const response = await getData()
     // getTotal(response, currentType)
+    let startTime = performance.now()
     const data = await getDataSilo()
     // console.log(data)
-    let startTime = performance.now()
     cleanContainer()
     if(Array.isArray(data)) {
         data.forEach(item => createCard(item.nom, item.id))
